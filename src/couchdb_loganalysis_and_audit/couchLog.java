@@ -25,6 +25,8 @@ import java.util.Scanner;
 //
 //selectLevel modes are also the same
 
+//date time format : 
+//                  yyyy-mm-ddThh:mm:ss
 
 public class couchLog {
     File logFile;
@@ -108,13 +110,11 @@ public class couchLog {
             {
                 String a = input.next();
                 String b = "";
-                
-                //if (a.charAt(0) == '[' && (a.charAt(1) != 'c' && a.charAt(2) != 'o') && a.charAt(1) != 'f' && a.charAt(1) != '"' && a.charAt(1) != '{' && (a.charAt(1) != 'a' && a.charAt(2) != 'd') && a.charAt(1) != '<')
+              
                 if (a.charAt(0) == '[' && (a.charAt(1) == 'd' || a.charAt(1) == 'i' || a.charAt(1) == 'w' || a.charAt(1) == 'e' || (a.charAt(1) == 'n' && a.charAt(2) == 'o' ) || (a.charAt(1) == 'c' && a.charAt(2) == 'r' ) || (a.charAt(1) == 'a' && a.charAt(2) == 'l' ) ))
                 {
                     b = input.next();
-                    //System.out.println(a);
-                    //System.out.println(b);
+
                     x = compareDate(b, startDate);
                     if (x == 1 || x == 0)
                     {
@@ -124,6 +124,77 @@ public class couchLog {
                     }
                 }
                 else if (x == 1 || x == 0)
+                {
+                    allLines.get(allLines.size()-1).lineContents.add(a);
+                }
+            }
+        }
+        else if (startDate.equals("*") && endDate.equals("*")  == false)
+        {
+            Scanner input = new Scanner("");
+            try{
+            input = new Scanner (new FileReader(address));
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            int x = 5;
+            while(input.hasNext())
+            {
+                String a = input.next();
+                String b = "";
+              
+                if (a.charAt(0) == '[' && (a.charAt(1) == 'd' || a.charAt(1) == 'i' || a.charAt(1) == 'w' || a.charAt(1) == 'e' || (a.charAt(1) == 'n' && a.charAt(2) == 'o' ) || (a.charAt(1) == 'c' && a.charAt(2) == 'r' ) || (a.charAt(1) == 'a' && a.charAt(2) == 'l' ) ))
+                {
+                    b = input.next();
+
+                    x = compareDate(b, endDate);
+                    if (x == -1 || x == 0)
+                    {
+                        allLines.add(new logLine(a));
+                        allLines.get(allLines.size()-1).lineContents.add(a);
+                        allLines.get(allLines.size()-1).lineContents.add(b);
+                    }
+                }
+                else if (x == -1 || x == 0)
+                {
+                    allLines.get(allLines.size()-1).lineContents.add(a);
+                }
+            }
+        }
+        else if (startDate.equals("*") == false && endDate.equals("*")  == false)
+        {
+            Scanner input = new Scanner("");
+            try{
+            input = new Scanner (new FileReader(address));
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            int x = 5;
+            int y = 5;
+            while(input.hasNext())
+            {
+                String a = input.next();
+                String b = "";
+              
+                if (a.charAt(0) == '[' && (a.charAt(1) == 'd' || a.charAt(1) == 'i' || a.charAt(1) == 'w' || a.charAt(1) == 'e' || (a.charAt(1) == 'n' && a.charAt(2) == 'o' ) || (a.charAt(1) == 'c' && a.charAt(2) == 'r' ) || (a.charAt(1) == 'a' && a.charAt(2) == 'l' ) ))
+                {
+                    b = input.next();
+
+                    x = compareDate(b, startDate);
+                    y = compareDate(b, endDate);
+                    
+                    if ((x == +1 || x == 0) && (y == -1 || y == 0))
+                    {
+                        allLines.add(new logLine(a));
+                        allLines.get(allLines.size()-1).lineContents.add(a);
+                        allLines.get(allLines.size()-1).lineContents.add(b);
+                    }
+                }
+                else if ((x == +1 || x == 0) && (y == -1 || y == 0))
                 {
                     allLines.get(allLines.size()-1).lineContents.add(a);
                 }

@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package couchdb_loganalysis_and_audit;
 
 /**
- *
  * @author Hossein Aghahosseini
  */
+
 public class CouchDB_LogAnalysis_and_Audit {
 
     /**
@@ -18,7 +14,9 @@ public class CouchDB_LogAnalysis_and_Audit {
         
         couchLog cl = new couchLog();
         //cl.importFile("C:\\CouchDB\\couch.log");
-        cl.importFileWithDateSelection("C:\\CouchDB\\couch.log","2018-05-10T07:39:24","*");
+        //cl.importFileWithDateSelection("C:\\CouchDB\\couch.log","2018-05-10T07:39:24","*");
+        //cl.importFileWithDateSelection("C:\\CouchDB\\couch.log","*","2018-05-14T11:58:26");
+        cl.importFileWithDateSelection("C:\\CouchDB\\couch.log","2018-05-14T07:26:11","2018-05-14T11:45:18");
         
         cl.showWarning();
         //System.out.print(cl.grepLog(-1,5));
