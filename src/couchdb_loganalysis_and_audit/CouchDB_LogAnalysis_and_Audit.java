@@ -18,12 +18,13 @@ public class CouchDB_LogAnalysis_and_Audit {
         //cl.importFileWithDateSelection("C:\\CouchDB\\couch.log","*","2018-05-14T11:58:26");
         cl.importFileWithDateSelection("C:\\CouchDB\\couch.log","2018-05-14T07:26:11","2018-05-14T11:45:18");
         
-        cl.showWarning();
+        cl.showWarningInColor();
+        //cl.exportLogToFile("E:\\a.txt");
         //System.out.print(cl.grepLog(-1,5));
         
         //couchLog cl2 = new couchLog(cl.getLogArrayList(-1, 5));
         
-        //cl2.showWarning();
+        //cl2.showWarningInColor();
         //System.out.print(cl2.grepLog(-1,5));
         
         System.out.println("\nAnalyzed That!");

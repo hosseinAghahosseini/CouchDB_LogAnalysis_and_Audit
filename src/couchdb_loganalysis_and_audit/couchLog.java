@@ -2,6 +2,7 @@ package couchdb_loganalysis_and_audit;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -203,7 +204,7 @@ public class couchLog {
         
     }
     
-    public void showWarning()
+    public void showWarningInColor()
     {
         for (int i = 0 ; i < allLines.size(); i++)
         {
@@ -510,6 +511,28 @@ public class couchLog {
         }
 
         return selectedLines;
+    }
+    
+    public void exportLogToFile (String fileAddress)
+    {
+        try
+        {
+            PrintWriter writer = new PrintWriter(fileAddress, "UTF-8");
+            for (int i = 0 ; i < allLines.size(); i++)
+            {
+                for (int j = 0 ; j < allLines.get(i).lineContents.size() ; j++)
+                {
+                    System.out.print(allLines.get(i).lineContents.get(j) + " ");
+                    writer.print(allLines.get(i).lineContents.get(j) + " ");
+                }
+                System.out.println();
+                writer.print("\n");
+            }
+        }
+        catch (Exception ew)
+        {
+            System.out.println(ew.getMessage());
+        }
     }
     
     int compareDate(String date1 , String date2)
