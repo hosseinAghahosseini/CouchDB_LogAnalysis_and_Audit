@@ -18,7 +18,8 @@ import java.util.Scanner;
 //           2 : critical
 //           3 : error
 //           4 : warning
-//           5 : notice (4XX | 5XX Error)
+//           5 : notice (HTTP Responses)  => for method getLogArrayList(int threshold , int selectLevel)
+//           5 : notice (4XX | 5XX Error) => for other methods
 //           6 : notice
 //           7 : info
 //           8 : debug
