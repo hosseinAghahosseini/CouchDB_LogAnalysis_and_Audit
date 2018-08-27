@@ -435,7 +435,8 @@ public class couchLog {
                 {
                    try
                    {   
-                        if(allLines.get(i).lineContents.get(10).charAt(0) == '4' | allLines.get(i).lineContents.get(10).charAt(0) == '5')
+                        //if(allLines.get(i).lineContents.get(10).charAt(0) == '4' | allLines.get(i).lineContents.get(10).charAt(0) == '5')
+                        if(allLines.get(i).lineContents.get(4).charAt(0) != '-' && allLines.get(i).lineContents.get(10).charAt(0) <= '5' && allLines.get(i).lineContents.get(10).charAt(0) >= '1')
                         {    
                             selectedLines.add(new logLine(allLines.get(i).lineContents.get(0)));
                             selectedLines.get(selectedLines.size()-1).lineContents.add(allLines.get(i).lineContents.get(0));
@@ -513,7 +514,7 @@ public class couchLog {
         return selectedLines;
     }
     
-    public void exportLogToFile (String fileAddress)
+    public Boolean exportLogToFile (String fileAddress)
     {
         try
         {
@@ -528,10 +529,13 @@ public class couchLog {
                 System.out.println();
                 writer.print("\n");
             }
+            writer.close();
+            return true;
         }
         catch (Exception ew)
         {
             System.out.println(ew.getMessage());
+            return false;
         }
     }
     

@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="CouchDB_LogAnalysis_and_Audit" default="default" basedir=".">
-    <description>Builds, tests, and runs the project CouchDB_LogAnalysis_and_Audit.</description>
+<project name="CouchDB_Log_Filter" default="default" basedir=".">
+    <description>Builds, tests, and runs the project CouchDB_Log_Filter.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
@@ -58,7 +58,7 @@
 
     An example of overriding the target for project execution could look like this:
 
-        <target name="run" depends="CouchDB_LogAnalysis_and_Audit-impl.jar">
+        <target name="run" depends="CouchDB_Log_Filter-impl.jar">
             <exec dir="bin" executable="launcher.exe">
                 <arg file="${dist.jar}"/>
             </exec>
